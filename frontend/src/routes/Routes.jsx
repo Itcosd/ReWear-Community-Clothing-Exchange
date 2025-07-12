@@ -21,6 +21,7 @@ import AdminPanel from "../pages/admin/AdminPanel";
 // Route Guards
 import ProtectedRoute from "../components/ProtectedRoute";
 import AdminRoute from "../components/AdminRoute";
+import ProductPage from "../pages/ProductPage";
 
 const AppRoutes = () => {
   return (

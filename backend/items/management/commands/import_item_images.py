@@ -3,9 +3,12 @@ import os
 import requests
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
-from items.models import Item, ItemImage  # adjust path if needed
+from items.models import Item, ItemImage
 
-IMAGE_PREFIX = "https://static.wixstatic.com/media/"
+IMAGE_PREFIX = "https://static.wixstatic.com/media/"  # Adjust if needed
+
+
+# ... keep the existing imports and class definition ...
 
 
 class Command(BaseCommand):
@@ -22,21 +25,25 @@ class Command(BaseCommand):
 
         with open(csv_file, newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
-
-            for row in reader:
+            for row_number, row in enumerate(reader, start=1):
                 product_name = row.get("name")
                 image_id = row.get("productImageUrl")
 
                 if not product_name or not image_id:
                     self.stdout.write(
-                        self.style.WARNING(f"⚠️ Skipping row: missing name or image")
+                        self.style.WARNING(
+                            f"⚠️ Row {row_number}: Missing name or image URL. Skipping."
+                        )
                     )
+                    skipped += 1
                     continue
 
                 qs = Item.objects.filter(title__iexact=product_name)
                 if not qs.exists():
                     self.stdout.write(
-                        self.style.ERROR(f"❌ No item found for name: {product_name}")
+                        self.style.ERROR(
+                            f"❌ Row {row_number}: No item found for name '{product_name}'"
+                        )
                     )
                     failed += 1
                     continue
@@ -44,42 +51,61 @@ class Command(BaseCommand):
                 if qs.count() > 1:
                     self.stdout.write(
                         self.style.WARNING(
-                            f"⚠️ Multiple items found for name: {product_name}, using the first one (id={qs.first().id})"
+                            f"⚠️ Row {row_number}: Multiple items found for '{product_name}', using first (id={qs.first().id})"
                         )
                     )
-
                 item = qs.first()
 
-                # Check if item already has any ItemImage
-                if ItemImage.objects.filter(item=item).exists():
+                # Delete existing images for the item before adding new one
+                existing_images = ItemImage.objects.filter(item=item)
+                if existing_images.exists():
+                    for img in existing_images:
+                        # Delete the image file from storage
+                        img.image.delete(save=False)
+                        # Delete the ItemImage instance
+                        img.delete()
                     self.stdout.write(
                         self.style.NOTICE(
-                            f"ℹ️ Item '{product_name}' (id={item.id}) already has an image. Skipping."
+                            f"ℹ️ Row {row_number}: Existing images for item '{product_name}' (id={item.id}) deleted."
                         )
                     )
-                    skipped += 1
-                    continue
 
-                image_url = IMAGE_PREFIX + image_id
+                # Compose full URL
+                if image_id.startswith("http://") or image_id.startswith("https://"):
+                    image_url = image_id
+                else:
+                    image_url = IMAGE_PREFIX + image_id
+
                 try:
-                    response = requests.get(image_url)
+                    response = requests.get(image_url, timeout=10)
                     response.raise_for_status()
                 except Exception as e:
                     self.stdout.write(
                         self.style.ERROR(
-                            f"❌ Failed to download image for '{product_name}': {e}"
+                            f"❌ Row {row_number}: Failed to download image for '{product_name}': {e}"
                         )
                     )
                     failed += 1
                     continue
 
-                file_name = os.path.basename(image_id)
-                item_image = ItemImage(item=item)
-                item_image.image.save(file_name, ContentFile(response.content))
-                item_image.save()
+                file_name = os.path.basename(image_url.split("?")[0])
+
+                try:
+                    item_image = ItemImage(item=item)
+                    item_image.image.save(file_name, ContentFile(response.content))
+                    item_image.save()
+                except Exception as e:
+                    self.stdout.write(
+                        self.style.ERROR(
+                            f"❌ Row {row_number}: Failed to save image for '{product_name}': {e}"
+                        )
+                    )
+                    failed += 1
+                    continue
+
                 self.stdout.write(
                     self.style.SUCCESS(
-                        f"✅ Attached image {file_name} to item {item.id} as ItemImage"
+                        f"✅ Row {row_number}: Attached image '{file_name}' to item {item.id}"
                     )
                 )
                 success += 1
