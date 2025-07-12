@@ -8,8 +8,12 @@ const Dashboard = () => {
       <div className="max-w-6xl mx-auto">
         {/* Dashboard Header */}
         <div className="mb-10 text-center">
-          <h1 className="text-3xl font-extrabold text-gray-800">User Dashboard</h1>
-          <p className="text-gray-600 mt-2">Manage your profile, points, and activity</p>
+          <h1 className="text-3xl font-extrabold text-gray-800">
+            User Dashboard
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Manage your profile, points, and activity
+          </p>
         </div>
 
         {/* Dashboard Grid */}
@@ -21,8 +25,12 @@ const Dashboard = () => {
           >
             <FaKey className="text-3xl text-blue-500" />
             <div>
-              <h2 className="text-lg font-semibold text-gray-800">Reset Password</h2>
-              <p className="text-sm text-gray-500">Change your account credentials</p>
+              <h2 className="text-lg font-semibold text-gray-800">
+                Reset Password
+              </h2>
+              <p className="text-sm text-gray-500">
+                Change your account credentials
+              </p>
             </div>
           </Link>
 
@@ -33,20 +41,26 @@ const Dashboard = () => {
           >
             <FaGift className="text-3xl text-green-500" />
             <div>
-              <h2 className="text-lg font-semibold text-gray-800">Point Redemption</h2>
+              <h2 className="text-lg font-semibold text-gray-800">
+                Point Redemption
+              </h2>
               <p className="text-sm text-gray-500">Use your earned points</p>
             </div>
           </Link>
 
           {/* Product List Card */}
           <Link
-            to="/products"
+            to="/user-products"
             className="bg-white p-6 rounded-xl shadow hover:shadow-md transition flex items-center space-x-4"
           >
             <FaBoxOpen className="text-3xl text-purple-500" />
             <div>
-              <h2 className="text-lg font-semibold text-gray-800">Product List</h2>
-              <p className="text-sm text-gray-500">View & manage your products</p>
+              <h2 className="text-lg font-semibold text-gray-800">
+                Product List
+              </h2>
+              <p className="text-sm text-gray-500">
+                View & manage your products
+              </p>
             </div>
           </Link>
 
@@ -57,7 +71,9 @@ const Dashboard = () => {
           >
             <FaHistory className="text-3xl text-yellow-500" />
             <div>
-              <h2 className="text-lg font-semibold text-gray-800">Transaction History</h2>
+              <h2 className="text-lg font-semibold text-gray-800">
+                Transaction History
+              </h2>
               <p className="text-sm text-gray-500">Track past exchanges</p>
             </div>
           </Link>

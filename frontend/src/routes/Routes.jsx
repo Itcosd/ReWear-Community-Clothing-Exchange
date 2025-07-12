@@ -23,10 +23,10 @@ import TransactionHistory from "../pages/user/TransactionHistory";
 import AdminPanel from "../pages/admin/AdminPanel";
 
 // Route Guards
-import ProtectedRoute from '../components/ProtectedRoute';
-import ProductPage from '../pages/ProductPage';
-import ManageUser from '../pages/admin/ManageUser';
-import ManageOrder from '../pages/admin/ManageOrder';
+import ProtectedRoute from "../components/ProtectedRoute";
+import ProductPage from "../pages/ProductPage";
+import ManageUser from "../pages/admin/ManageUser";
+import ManageOrder from "../pages/admin/ManageOrder";
 import ProductDetail from "../components/ProductDetails";
 
 const AppRoutes = () => {
@@ -38,24 +38,24 @@ const AppRoutes = () => {
       <Route path="/item/:id" element={<ItemDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/products" element={<ProductPage/>} />
-      <Route path="/productdetails" element={<ProductDetail/>} />
+      <Route path="/products" element={<ProductPage />} />
+      <Route path="/products/:id" element={<ProductDetail />} />
 
       {/* Protected User Routes */}
-      <Route >
+      <Route>
         <Route path="/add-item" element={<AddItem />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/points" element={<PointRedemption />} />
-        <Route path="/products" element={<ProductList />} />
+        <Route path="/user-products" element={<ProductList />} />
         <Route path="/transactions" element={<TransactionHistory />} />
       </Route>
 
       {/* Admin Routes */}
-      <Route >
+      <Route>
         <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/admin/users" element={<ManageUser/>} />
-        <Route path="/admin/orders" element={<ManageOrder/>} />
+        <Route path="/admin/users" element={<ManageUser />} />
+        <Route path="/admin/orders" element={<ManageOrder />} />
       </Route>
     </Routes>
   );

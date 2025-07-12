@@ -15,12 +15,13 @@ const ItemCard = ({ title }) => {
         {products.map((item) => {
           const imageUrl =
             item.images && item.images.length > 0
-              ? `${item.images[0].image}` // Use image path as is
+              ? item.images[0].image
               : "/img/demo.jpg";
 
           return (
             <CardLayout
               key={item.id}
+              id={item.id}
               image={imageUrl}
               title={item.title}
               price={item.points}
