@@ -21,6 +21,7 @@ import AdminPanel from '../pages/admin/AdminPanel';
 // Route Guards
 import ProtectedRoute from '../components/ProtectedRoute';
 import AdminRoute from '../components/AdminRoute';
+import ProductPage from '../pages/ProductPage';
 
 const AppRoutes = () => {
   return (
@@ -31,6 +32,7 @@ const AppRoutes = () => {
       <Route path="/item/:id" element={<ItemDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/products" element={<ProductPage/>} />
 
       {/* Protected User Routes */}
       <Route element={<ProtectedRoute />}>

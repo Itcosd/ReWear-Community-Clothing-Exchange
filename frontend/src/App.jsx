@@ -82,7 +82,6 @@ function App() {
           <AppRoutes />
         </main>
         <Footer />
-        <ProductPage/>
       </div>
     </Router>
   );
