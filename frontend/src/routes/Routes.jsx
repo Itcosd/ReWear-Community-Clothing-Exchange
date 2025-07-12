@@ -19,9 +19,10 @@ import Dashboard from "../pages/user/Dashboard";
 import AdminPanel from "../pages/admin/AdminPanel";
 
 // Route Guards
-import ProtectedRoute from "../components/ProtectedRoute";
-import AdminRoute from "../components/AdminRoute";
-import ProductPage from "../pages/ProductPage";
+import ProtectedRoute from '../components/ProtectedRoute';
+import ProductPage from '../pages/ProductPage';
+import ManageUser from '../pages/admin/ManageUser';
+import ManageOrder from '../pages/admin/ManageOrder';
 
 const AppRoutes = () => {
   return (
@@ -32,7 +33,8 @@ const AppRoutes = () => {
       <Route path="/item/:id" element={<ItemDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/products" element={<ProductPage />} />
+      <Route path="/products" element={<ProductPage/>} />
+      <Route path="/productdetails/:id" element={<ProductDetails/>} />
 
       {/* Protected User Routes */}
       <Route element={<ProtectedRoute />}>
@@ -41,8 +43,10 @@ const AppRoutes = () => {
       </Route>
 
       {/* Admin Routes */}
-      <Route element={<AdminRoute />}>
+      <Route >
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/users" element={<ManageUser/>} />
+        <Route path="/admin/orders" element={<ManageOrder/>} />
       </Route>
     </Routes>
   );

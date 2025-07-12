@@ -4,18 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 const slides = [
   {
     id: 1,
-    title: 'Swap Fashion. Save the Planet.',
-    image: 'https://source.unsplash.com/1600x900/?clothes,swap',
+    title: '',
+    image: 'img/1.jpg',
   },
   {
     id: 2,
-    title: 'Refresh Your Wardrobe for Free',
-    image: 'https://source.unsplash.com/1600x900/?fashion,thrift',
+    title: '',
+    image: 'img/2.jpg',
   },
   {
     id: 3,
-    title: 'Join the Clothing Exchange Revolution',
-    image: 'https://source.unsplash.com/1600x900/?vintage,clothing',
+    title: '',
+    image: 'img/3.jpg',
   },
 ];
 
