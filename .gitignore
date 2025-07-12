@@ -7,7 +7,6 @@ __pycache__/
 # Django
 db.sqlite3
 /staticfiles/
-/media/
 /.env
 
 # Node.js
@@ -32,5 +31,4 @@ frontend/.env
 # Backend
 backend/__pycache__/
 backend/staticfiles/
-backend/media/
 backend/.env
