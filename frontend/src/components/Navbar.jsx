@@ -50,7 +50,12 @@ const Navbar = () => {
         <div className="flex justify-end items-center space-x-4">
           {user ? (
             <>
-              <span className="text-[#f8f9fa]">Welcome, {user.username}</span>
+             
+              <Link to="/dashboard" className="mr-4">
+              <button className="bg-[#dee2e6] text-[#212529] px-4 py-2 rounded-md hover:bg-[#ced4da] transition font-semibold">
+                {user.username}
+              </button>
+            </Link>
               <button
                 onClick={handleLogout}
                 className="bg-[#dee2e6] text-[#212529] px-4 py-2 rounded-md hover:bg-[#ced4da] transition font-semibold"
