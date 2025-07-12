@@ -58,12 +58,3 @@ class ItemImage(models.Model):
     def __str__(self):
         return f"Image for {self.item.title}"
 
-class Review(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='reviews')
-    reviewer = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField()
-    comment = models.TextField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Review by {self.reviewer.user.username} on {self.item.title}"
