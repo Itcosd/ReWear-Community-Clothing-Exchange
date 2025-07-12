@@ -1,3 +1,12 @@
 from django.contrib import admin
+from .models import (
+    SwapRequest,
+    PointRedemption,
+    TransactionHistory,
+    AdminActionLog
+)
 
-# Register your models here.
+admin.site.register(SwapRequest)
+admin.site.register(PointRedemption)
+admin.site.register(TransactionHistory)
+admin.site.register(AdminActionLog)
