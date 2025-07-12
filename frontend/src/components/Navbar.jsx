@@ -1,8 +1,8 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCredentials } from "../features/authSlice";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ const Navbar = () => {
   };
 
   return (
-    
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={showNavbar ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
@@ -30,8 +29,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between md:grid md:grid-cols-3">
         {/* Left: Links */}
         <div className="hidden md:flex space-x-6 text-[#dee2e6]">
-          <Link to="/" className="hover:text-[#f8f9fa] transition">Home</Link>
-          <Link to="/contact" className="hover:text-[#f8f9fa] transition">Contact Us</Link>
+          <Link to="/" className="hover:text-[#f8f9fa] transition">
+            Home
+          </Link>
+          <Link to="/contact" className="hover:text-[#f8f9fa] transition">
+            Contact Us
+          </Link>
         </div>
 
         {/* Center: Search */}
@@ -47,16 +50,16 @@ const Navbar = () => {
         <div className="flex justify-end items-center space-x-4">
           {user ? (
             <>
-              <span className="text-[#f8f9fa]">Welcome, {user.name}</span>
+              <span className="text-[#f8f9fa]">Welcome, {user.username}</span>
               <button
-                onClick={handleLogout}  
+                onClick={handleLogout}
                 className="bg-[#dee2e6] text-[#212529] px-4 py-2 rounded-md hover:bg-[#ced4da] transition font-semibold"
               >
                 Logout
               </button>
             </>
           ) : (
-             <Link to="/login" className="mr-4">
+            <Link to="/login" className="mr-4">
               <button className="bg-[#dee2e6] text-[#212529] px-4 py-2 rounded-md hover:bg-[#ced4da] transition font-semibold">
                 Sign In
               </button>
@@ -68,7 +71,7 @@ const Navbar = () => {
             className="md:hidden text-3xl text-[#f8f9fa] focus:outline-none"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? '✕' : '☰'}
+            {menuOpen ? "✕" : "☰"}
           </button>
         </div>
       </div>
@@ -81,8 +84,20 @@ const Navbar = () => {
             placeholder="Search..."
             className="w-full px-4 py-2 rounded-md bg-[#495057] text-[#f8f9fa] placeholder-[#adb5bd] focus:outline-none focus:ring-2 focus:ring-[#adb5bd]"
           />
-          <Link to="/" className="block hover:text-[#adb5bd]" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link to="/contact" className="block hover:text-[#adb5bd]" onClick={() => setMenuOpen(false)}>Contact Us</Link>
+          <Link
+            to="/"
+            className="block hover:text-[#adb5bd]"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            to="/contact"
+            className="block hover:text-[#adb5bd]"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contact Us
+          </Link>
           <Link to="/login" onClick={() => setMenuOpen(false)}>
             <button className="w-full bg-[#dee2e6] text-[#212529] px-4 py-2 rounded-md hover:bg-[#ced4da] transition font-semibold">
               Sign In

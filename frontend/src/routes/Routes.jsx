@@ -1,27 +1,26 @@
 // src/routes/Routes.jsx
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 // Auth Pages
-import Login from '../pages/auth/Login';
-import Register from '../pages/auth/Register';
+import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
 
 // General Pages
-import Home from '../pages/general/Home';
-import ItemList from '../pages/general/ItemList';
-import ItemDetail from '../pages/general/ItemDetail';
-import AddItem from '../pages/general/AddItem';
+import Home from "../pages/general/Home";
+import ItemList from "../pages/general/ItemList";
+import ItemDetail from "../pages/general/ItemDetail";
+import AddItem from "../pages/general/AddItem";
 
 // User Pages
-import Dashboard from '../pages/user/Dashboard';
+import Dashboard from "../pages/user/Dashboard";
 
 // Admin Pages
-import AdminPanel from '../pages/admin/AdminPanel';
+import AdminPanel from "../pages/admin/AdminPanel";
 
 // Route Guards
-import ProtectedRoute from '../components/ProtectedRoute';
-import AdminRoute from '../components/AdminRoute';
-import ProductPage from '../pages/ProductPage';
+import ProtectedRoute from "../components/ProtectedRoute";
+import AdminRoute from "../components/AdminRoute";
 
 const AppRoutes = () => {
   return (
@@ -32,7 +31,7 @@ const AppRoutes = () => {
       <Route path="/item/:id" element={<ItemDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/products" element={<ProductPage/>} />
+      <Route path="/products" element={<ProductPage />} />
 
       {/* Protected User Routes */}
       <Route element={<ProtectedRoute />}>
