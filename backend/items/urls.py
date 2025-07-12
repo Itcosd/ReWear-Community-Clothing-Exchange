@@ -12,8 +12,8 @@ urlpatterns = [
     path('conditions/<int:pk>/', ConditionRetrieveUpdateDestroyView.as_view(), name='condition-detail'),
     path('tags/', TagListCreateView.as_view(), name='tag-list-create'),
     path('tags/<int:pk>/', TagRetrieveUpdateDestroyView.as_view(), name='tag-detail'),
-    path('items/', ItemListCreateView.as_view(), name='item-list-create'),
-    path('items/<int:pk>/', ItemRetrieveUpdateDestroyView.as_view(), name='item-detail'),
+    path('products/', ItemListCreateView.as_view(), name='item-list-create'),
+    path('products/<int:pk>/', ItemRetrieveUpdateDestroyView.as_view(), name='item-detail'),
     path('item-images/', ItemImageListCreateView.as_view(), name='itemimage-list-create'),
     path('item-images/<int:pk>/', ItemImageRetrieveDestroyView.as_view(), name='itemimage-detail'),
     
