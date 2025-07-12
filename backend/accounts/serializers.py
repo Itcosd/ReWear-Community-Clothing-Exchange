@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile,UserReview
 # from .models import Student
 
 # class StudentSerializer(serializers.ModelSerializer):
@@ -19,3 +19,11 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['id', 'user', 'points_balance']
+
+class UserReviewSerializer(serializers.ModelSerializer):
+    reviewer = serializers.StringRelatedField(read_only=True)
+    reviewed_user = serializers.StringRelatedField(read_only=True)
+
+    class Meta:
+        model = UserReview
+        fields = ['id', 'reviewer', 'reviewed_user', 'rating', 'comment', 'created_at']
