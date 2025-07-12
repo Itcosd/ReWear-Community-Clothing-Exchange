@@ -37,8 +37,8 @@ const AppRoutes = () => {
       <Route path="/item/:id" element={<ItemDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/products" element={<ProductPage/>} />
-      <Route path="/productdetails/:id" element={<ProductDetails/>} />
+      {/* <Route path="/products" element={<ProductPage/>} /> */}
+      <Route path="/productdetails/:id" element={<ProductPage/>} />
 
       {/* Protected User Routes */}
       <Route >
