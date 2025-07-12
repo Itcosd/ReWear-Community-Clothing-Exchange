@@ -14,6 +14,10 @@ import AddItem from "../pages/general/AddItem";
 
 // User Pages
 import Dashboard from "../pages/user/Dashboard";
+import ResetPassword from "../pages/user/ResetPassword";
+import PointRedemption from "../pages/user/PointRedemption";
+import ProductList from "../pages/user/ProductList";
+import TransactionHistory from "../pages/user/TransactionHistory";
 
 // Admin Pages
 import AdminPanel from "../pages/admin/AdminPanel";
@@ -37,9 +41,13 @@ const AppRoutes = () => {
       <Route path="/productdetails/:id" element={<ProductDetails/>} />
 
       {/* Protected User Routes */}
-      <Route element={<ProtectedRoute />}>
+      <Route >
         <Route path="/add-item" element={<AddItem />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/points" element={<PointRedemption />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/transactions" element={<TransactionHistory />} />
       </Route>
 
       {/* Admin Routes */}
