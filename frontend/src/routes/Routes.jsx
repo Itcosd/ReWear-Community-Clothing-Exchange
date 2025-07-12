@@ -27,6 +27,7 @@ import ProtectedRoute from '../components/ProtectedRoute';
 import ProductPage from '../pages/ProductPage';
 import ManageUser from '../pages/admin/ManageUser';
 import ManageOrder from '../pages/admin/ManageOrder';
+import ProductDetail from "../components/ProductDetails";
 
 const AppRoutes = () => {
   return (
@@ -37,8 +38,8 @@ const AppRoutes = () => {
       <Route path="/item/:id" element={<ItemDetail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      {/* <Route path="/products" element={<ProductPage/>} /> */}
-      <Route path="/productdetails/:id" element={<ProductPage/>} />
+      <Route path="/products" element={<ProductPage/>} />
+      <Route path="/productdetails" element={<ProductDetail/>} />
 
       {/* Protected User Routes */}
       <Route >

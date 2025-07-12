@@ -9,9 +9,9 @@ const Home = () => {
     <div>
        <Carousel/>
        <CategoryBox/>
-       <ItemCard title="abc"/>
-       <ItemCard title="abc"/>
-       <ItemCard title="abc"/>
+       <ItemCard title="Denim Jacket & Jeans & Shorts" />
+       <ItemCard title="Denim Jacket & Jeans & Shorts"/>
+       <ItemCard title="Denim Jacket & Jeans & Shorts"/>
     </div>
   )
 }
